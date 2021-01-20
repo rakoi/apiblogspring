@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Person {
 	@Id
 	public int id;
-	public String sur_name;
+	public String surname;
 	
 	public String firstname;
 	public String dob;
@@ -24,7 +24,7 @@ public class Person {
 	}
 	public Person(String sur_name, String first_name, String dob, String email, String mobile_no) {
 	
-		this.sur_name = sur_name;
+		this.surname = sur_name;
 		this.firstname = first_name;
 		this.dob = dob;
 		this.email = email;
@@ -35,18 +35,6 @@ public class Person {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getSur_name() {
-		return sur_name;
-	}
-	public void setSur_name(String sur_name) {
-		this.sur_name = sur_name;
-	}
-	public String getFirst_name() {
-		return firstname;
-	}
-	public void setFirst_name(String first_name) {
-		this.firstname = first_name;
 	}
 	public String getDob() {
 		return dob;
@@ -66,6 +54,19 @@ public class Person {
 	public void setMobile_no(String mobile_no) {
 		this.mobile_no = mobile_no;
 	}
+	public String getSurname() {
+		return surname;
+	}
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	
 	
 	
 	
