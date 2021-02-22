@@ -35,9 +35,13 @@ public class PersonController {
 	
 	
 	@RequestMapping(value="/blog/getPerson/{personId}")
-	@ResponseBody
 	public Person getPerson(@PathVariable(value="personId") int id) {
 		
+		return personRepository.getOne(id);
+	}
+	@RequestMapping(value="/blog/getPerson")
+	public Person getPersonbyId(@RequestParam(value="id") int id) {
+		System.out.println("Id is "+id);
 		return personRepository.getOne(id);
 	}
 	
@@ -45,13 +49,7 @@ public class PersonController {
 	@ResponseBody
 	public int addPerson(Person person) {
 		
-		
-		System.out.println(person.getEmail());
-		System.out.println(person.getMobile_no());
-		System.out.println(person.surname);
-		System.out.println(person.email);
-		System.out.println(person.dob);
-		System.out.println("JHEL2");
+		System.out.println(person.toString());
 		
 	
 
@@ -61,7 +59,7 @@ public class PersonController {
 			 
 			return 1;
 		}catch(Exception e) {
-			System.out.println("Errors");
+			System.out.println("Errors saving person "+e.toString());
 			return 0;
 		}
 		
@@ -72,7 +70,7 @@ public class PersonController {
 	public int updatePerson(Person person) {
 		
 		
-
+		System.out.print(person);
 		try{
 			Person Updateperson=personRepository.getOne(person.id);
 			
@@ -81,10 +79,8 @@ public class PersonController {
 			Updateperson.firstname=person.firstname;
 			Updateperson.mobile_no=person.mobile_no;
 			
-			personRepository.save(Updateperson);
-			
-		
-			 
+			Person saved=personRepository.save(Updateperson);
+			System.out.println(saved.toString());
 			return 1;
 		}catch(Exception $e) {
 			return 0;

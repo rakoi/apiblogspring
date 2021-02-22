@@ -1,6 +1,8 @@
 package com.limo.blog.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -8,6 +10,7 @@ import javax.persistence.Table;
 @Table(name="person")
 public class Person {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
 	public String surname;
 	
@@ -22,6 +25,17 @@ public class Person {
 	public Person() {
 		super();
 	}
+	
+	public Person(int id, String surname, String firstname, String dob, String email, String mobile_no) {
+		super();
+		this.id = id;
+		this.surname = surname;
+		this.firstname = firstname;
+		this.dob = dob;
+		this.email = email;
+		this.mobile_no = mobile_no;
+	}
+
 	public Person(String sur_name, String first_name, String dob, String email, String mobile_no) {
 	
 		this.surname = sur_name;
@@ -66,8 +80,11 @@ public class Person {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", surname=" + surname + ", firstname=" + firstname + ", dob=" + dob + ", email="
+				+ email + ", mobile_no=" + mobile_no + "]";
+	}
 	
 	
 }
